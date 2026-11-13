@@ -5,7 +5,7 @@ function Delivery() {
     const [submitted, setSubmitted] = useState(false);
     const [inquirySubject, setInquirySubject] = useState("Book a Coffee Van");
 
-    const handleSubmit = async (e) => { // 👈 Added async here
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const userInput = Object.fromEntries(formData);
@@ -24,7 +24,6 @@ function Delivery() {
                 setSubmitted("Thank you! Your inquiry has been sent. We'll get back to you shortly.");
                 e.target.reset();
 
-                // Auto-dismiss confirmation after 20 seconds
                 setTimeout(() => {
                     setSubmitted(false);
                 }, 20000);
@@ -136,7 +135,6 @@ function Delivery() {
                         </select>
                     </div>
 
-                    {/* CONDITIONAL FIELDS FOR CATERING */}
                     {inquirySubject === "Book a Coffee Van" && (
                         <>
                             <div className="form-group">
@@ -156,7 +154,6 @@ function Delivery() {
                         </>
                     )}
 
-                    {/* CONDITIONAL FIELDS FOR BULK BEANS */}
                     {inquirySubject === "Bag Reservation" && (
                         <div className="form-group">
                             <label htmlFor="beanDetails">Coffee Selection & Quantity *</label>
@@ -164,7 +161,7 @@ function Delivery() {
                                 id="beanDetails"
                                 name="beanDetails"
                                 rows="3"
-                                placeholder="Which blends wouldst thou like (e.g., 2x Velvet & Spice, 1x Decaf)? And pickup vs. local bulk delivery?"
+                                placeholder="Which blends would you like (e.g., 2x Velvet & Spice, 1x Decaf)? And pickup vs. local bulk delivery?"
                                 required
                             ></textarea>
                         </div>
